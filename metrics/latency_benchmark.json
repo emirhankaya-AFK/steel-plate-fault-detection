@@ -1,0 +1,40 @@
+{
+  "single_request": {
+    "num_requests": 500,
+    "mean_ms": 44.581,
+    "std_ms": 9.702,
+    "min_ms": 36.388,
+    "p50_ms": 39.36,
+    "p90_ms": 51.773,
+    "p95_ms": 53.98,
+    "p99_ms": 87.912,
+    "max_ms": 128.479,
+    "throughput_req_per_sec": 22.4
+  },
+  "batch_requests": {
+    "batch_size_1": {
+      "mean_batch_ms": 40.482,
+      "per_sample_ms": 40.4816,
+      "p95_batch_ms": 48.703,
+      "samples_per_sec": 24.7
+    },
+    "batch_size_10": {
+      "mean_batch_ms": 39.478,
+      "per_sample_ms": 3.9478,
+      "p95_batch_ms": 48.499,
+      "samples_per_sec": 253.3
+    },
+    "batch_size_50": {
+      "mean_batch_ms": 47.95,
+      "per_sample_ms": 0.959,
+      "p95_batch_ms": 51.61,
+      "samples_per_sec": 1042.7
+    },
+    "batch_size_100": {
+      "mean_batch_ms": 53.043,
+      "per_sample_ms": 0.5304,
+      "p95_batch_ms": 60.452,
+      "samples_per_sec": 1885.3
+    }
+  }
+}

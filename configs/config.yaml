@@ -1,0 +1,49 @@
+data:
+  raw_data_url: "https://archive.ics.uci.edu/static/public/198/steel+plates+faults.zip"
+  raw_data_dir: "data/raw"
+  test_size: 0.15
+  val_size: 0.15
+  random_seed: 42
+  synthetic_sample_size: 200
+
+model:
+  selected_model: "random_forest"
+  random_seed: 42
+  baseline:
+    type: "logistic_regression"
+    max_iter: 2000
+    class_weight: "balanced"
+    C: 1.0
+  random_forest:
+    type: "random_forest"
+    n_estimators: 300
+    max_depth: null
+    min_samples_split: 2
+    class_weight: "balanced"
+    n_jobs: -1
+  hist_gradient_boosting:
+    type: "hist_gradient_boosting"
+    max_iter: 200
+    class_weight: "balanced"
+    min_samples_leaf: 5
+
+calibration:
+  enabled: true
+  method: "sigmoid"
+
+abstention:
+  default_confidence_threshold: 0.50
+  thresholds_to_evaluate: [0.0, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90]
+
+drift:
+  psi_threshold_warning: 0.10
+  psi_threshold_drift: 0.20
+  ks_alpha: 0.05
+  n_bins: 10
+
+serving:
+  host: "127.0.0.1"
+  port: 8000
+  model_artifact_path: "artifacts/models/best_model.joblib"
+  reference_data_path: "artifacts/reference_distribution.joblib"
+  metrics_path: "metrics/metrics.json"
