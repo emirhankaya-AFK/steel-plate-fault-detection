@@ -1,3 +1,4 @@
+# English — [UPDATED]
 # Steel Plate Fault Detection & Quality Monitoring
 
 [![CI](https://github.com/recruiter-showcase/steel-plate-fault-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/recruiter-showcase/steel-plate-fault-detection/actions/workflows/ci.yml)
@@ -254,63 +255,4 @@ steel-plate-fault-detection/
 │       │   ├── __init__.py
 │       │   ├── downloader.py    # Runtime UCI dataset downloader and disk parser
 │       │   ├── preprocessing.py # Leakage-safe preprocessor
-│       │   ├── schema.py        # Pydantic schemas and feature definitions
-│       │   ├── splitter.py      # Stratified train/val/test splitter
-│       │   └── synthetic.py     # Deterministic synthetic fixture generator
-│       ├── evaluation/
-│       │   ├── __init__.py
-│       │   ├── explainability.py# Permutation and native Gini feature importance
-│       │   └── metrics.py       # Macro-F1, Brier score, ECE, classification report
-│       ├── models/
-│       │   ├── __init__.py
-│       │   ├── abstention.py    # Selective classification & review policy
-│       │   ├── baseline.py      # Balanced Logistic Regression pipeline
-│       │   ├── calibration.py   # Validation probability calibration wrapper
-│       │   └── strong_model.py  # Balanced Random Forest & HistGradientBoosting
-│       ├── monitoring/
-│       │   ├── __init__.py
-│       │   └── drift.py         # PSI with Laplace smoothing & KS test drift monitoring
-│       └── pipeline/
-│           ├── __init__.py
-│           └── runner.py        # Full training, evaluation, and artifact export orchestrator
-├── tests/
-│   ├── conftest.py              # Pytest fixtures and mock client
-│   ├── fixtures/
-│   │   └── synthetic_steel_faults.csv # Deterministic offline CSV fixture
-│   ├── test_api.py              # 6 tests for FastAPI endpoints
-│   ├── test_calibration_and_abstention.py # 4 tests for calibration & selective accuracy
-│   ├── test_class_mapping.py    # 3 tests for label extraction
-│   ├── test_downloader.py       # 3 tests for data downloading and parsing
-│   ├── test_drift.py            # 4 tests for PSI and KS drift detection
-│   ├── test_explainability.py   # 2 tests for permutation and Gini importance
-│   ├── test_leakage_and_preprocessing.py # 5 tests ensuring zero leakage
-│   ├── test_metrics.py          # 3 tests for Macro-F1, Brier score, and ECE
-│   ├── test_models.py           # 4 tests for model training and determinism
-│   ├── test_schema.py           # 6 tests for Pydantic input validation
-│   ├── test_splitter.py         # 4 tests for split stratification & disjointness
-│   └── test_synthetic_fixture.py# 1 test verifying synthetic fixture integrity
-├── .gitignore                   # Ignores raw data, caches, and models; commits metrics & config
-├── LICENSE                      # MIT License
-├── MODEL_CARD.md                # Comprehensive model card with ethical and operational limits
-├── pyproject.toml               # Package build metadata, Ruff, and pytest configurations
-├── requirements.txt             # Pinned dependency specifications
-└── README.md                    # Project documentation
-```
-
----
-
-## Honest Limitations & Real-World Caveats
-
-- **Imbalance on Rare Classes:** `Dirtiness` (55 samples total) and `Stains` (72 samples total) constitute very small fractions of real-world defect streams. While precision on the test set is high ($1.00$), confidence intervals on true operational recall are wider than for dominant classes.
-- **Heterogeneous Catch-All (`Other_Faults`):** Comprising $34.7\%$ of the dataset, `Other_Faults` is a generic bucket grouping diverse unstandardized surface anomalies. It exhibits the lowest precision ($67.8\%$) and is the primary source of confusion with `Pastry` and `Bumps`.
-- **Sensor Hardware Evolution:** The dataset reflects 2010-era industrial vision equipment. In a real-world modernization deployment, continuous monitoring with `DriftDetector` is mandatory to detect resolution and lighting shifts.
-- **Single-Node CPU Deployment:** While achieving $>1,500$ samples/sec in batch inference, large enterprise production facilities processing hundreds of high-speed rolling lines simultaneously should deploy horizontal worker replicas behind a load balancer.
-
----
-
-## Dataset Attribution & License
-
-- **Dataset:** Steel Plates Faults Dataset (UCI Machine Learning Repository, ID 198).
-- **Authors:** Semeion, Research Center of Sciences of Communication (Via Sersale 117, 00128 Rome, Italy).
-- **License:** Open Access / Research Use. This repository does not redistribute raw data; the pipeline downloads and parses the official archive at runtime.
-- **Software License:** MIT License (see [LICENSE](file:///C:/Users/emirh/Desktop/Kodlar/steel-plate-fault-detection/LICENSE)).
+│       │   ├── schema.py        # Pyd
